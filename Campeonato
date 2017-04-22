@@ -1,0 +1,83 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package campeonato;
+
+import java.util.Scanner;
+
+/**
+ *
+ * @author Javier
+ */
+public class Campeonato {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        
+        Scanner entrada = new Scanner(System.in);
+        int afavor;
+        int encontra;
+        int acumuladorafavor=0;
+        int acumuladorencontra=0;
+        int puntos=0;
+        int empates=0;
+        int ganados=0;
+        int perdidos=0;
+        int diferencia=0;
+        boolean clasificacion;
+   
+        for (int i = 0; i < 10; i++) {
+            System.out.println("Goles a Favor");
+            afavor = entrada.nextInt();
+            System.out.println("Goles en contra");
+            encontra = entrada.nextInt();
+
+            acumuladorafavor = acumuladorafavor + afavor;
+            acumuladorencontra = acumuladorencontra + encontra;
+
+            if (afavor > encontra) {
+                puntos = puntos + 3;
+                ganados = ganados + 1;
+            } else {
+                if (afavor < encontra) {
+                    puntos = puntos + 1;
+                    perdidos = perdidos + 1;
+                } else {
+                    empates = empates + 1;
+
+                }
+
+            }
+
+            diferencia = (afavor - encontra) + diferencia ;
+            
+
+            System.out.println("Goles a Favor: " + acumuladorafavor);
+            System.out.println("Goles en contra: " + acumuladorencontra);
+            System.out.println("Puntos obtenidos: " + puntos);
+            System.out.println("Partidos ganados: " + ganados);
+            System.out.println("Partidos empatados: " + empates);
+            System.out.println("Partidos perdidos: " + perdidos);
+            System.out.println("Diferencia de goles: " + diferencia);
+
+            if (puntos < 10) {
+                System.out.println("Clasificación: Liguilla de Promoción");
+            } else {
+                if (puntos <= puntos && puntos < 20) {
+                    System.out.println("Clasificación: No liguilla");
+                } else {
+                    System.out.println("Clasificación: Liguilla de Campeonato");
+                }
+
+            }
+
+        }
+
+       
+    }
+
+}
