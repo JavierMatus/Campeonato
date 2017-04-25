@@ -1,0 +1,205 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package pizzeria;
+
+import java.util.Scanner;
+
+/**
+ *
+ * @author guest-gcdjyo
+ */
+public class Pizzeria {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        Scanner entrada = new Scanner(System.in);
+        
+        int base;
+        int queso;
+        int jamon;
+        int tomate;
+        int champiñones;
+        int stockbase = 0;
+        double stockqueso = 0;
+        double stockjamon = 0;
+        double stocktomate = 0;
+        double stockchampiñones = 0;
+        int pizza;
+        int cantidadP;
+        int opcion;
+        int total = 0;
+        int pizzasvendidas1 = 0;
+        int pizzasvendidas2 = 0;
+        int pizzasvendidas3 = 0;
+        int pizzasvendidasT = 0;
+        int conta=1;
+        int totaltipo1=0;
+        int totaltipo2=0;
+        int totaltipo3=0;
+        int utilidad;
+
+        do {
+            System.out.println("Ingrese cantidad de bases de pizzas");
+            base = entrada.nextInt();
+
+            if ((base >= 10) && (base <= 50)) {
+                stockbase = stockbase + base;
+
+            } else {
+                System.out.println(" ERROR: Ingrese cantidad entre 10 y 50 unidades");
+            }
+
+        } while ((base < 10) || (base > 50));
+
+        do {
+            System.out.println("Ingrese kg de queso");
+            queso = entrada.nextInt();
+
+            if ((queso >= 10) && (queso <= 20)) {
+                stockqueso = stockqueso + queso;
+
+            } else {
+                System.out.println(" ERROR: Ingrese cantidad entre 10 y 20 kg.");
+            }
+
+        } while ((queso < 10) || (queso > 20));
+
+        do {
+            System.out.println("Ingrese Kg. de jamòn");
+            jamon = entrada.nextInt();
+
+            if ((jamon >= 5) && (jamon <= 10)) {
+                stockjamon = stockjamon + jamon;
+
+            } else {
+                System.out.println(" ERROR: Ingrese cantidad entre 5 y 10 kg.");
+            }
+
+        } while ((jamon < 5) || (jamon > 10));
+
+        do {
+            System.out.println("Ingrese Kg. de tomates");
+            tomate = entrada.nextInt();
+
+            if ((tomate >= 10) && (tomate <= 15)) {
+                stocktomate = stocktomate + tomate;
+
+            } else {
+                System.out.println(" ERROR: Ingrese cantidad entre 10 y 15 kg.");
+            }
+
+        } while ((tomate < 10) || (tomate > 15));
+
+        do {
+            System.out.println("Ingrese Kg. de champiñones");
+            champiñones = entrada.nextInt();
+
+            if ((champiñones >= 5) && (champiñones <= 10)) {
+                stockchampiñones = stockchampiñones + champiñones;
+
+            } else {
+                System.out.println(" ERROR: Ingrese cantidad entre 5 y 10 kg.");
+            }
+
+        } while ((champiñones < 5) || (champiñones > 10));
+
+       for(int i = 0; i <= conta ; i++){
+
+        do{
+        
+        
+        System.out.println("Ingrese número de pizza a comprar");
+        pizza = entrada.nextInt();
+        
+        switch (pizza) {
+            case 1:  System.out.println("Ingrese cantidad de pizzas");
+                    
+                     cantidadP = entrada.nextInt();
+                     stockbase = stockbase - (1 * cantidadP) ;
+                     stockqueso = stockqueso - (0.1 * cantidadP);
+                     stockjamon = stockjamon - (0.1 * cantidadP);
+                     stocktomate = stocktomate - (0.2 * cantidadP);
+                     totaltipo1 = 2500 * cantidadP;
+                     total = total + totaltipo1;
+                     pizzasvendidas1 = pizzasvendidas1 + cantidadP;
+                      
+                     break;
+          
+            case 2:  System.out.println("Ingrese cantidad de pizzas");
+                     cantidadP = entrada.nextInt();
+                     stockbase = stockbase - (1 * cantidadP);
+                     stockqueso = stockqueso - (0.2 * cantidadP);
+                     stocktomate = stocktomate - (0.2 * cantidadP);
+                     stockjamon = stockjamon - (0.1 * cantidadP); 
+                     totaltipo2 = 3000 * cantidadP;
+                     total = total + totaltipo2;
+                     pizzasvendidas2 = pizzasvendidas2 + cantidadP;
+                     break;
+                     
+            case 3:  System.out.println("Ingrese cantidad de pizzas");
+                     cantidadP = entrada.nextInt();
+                     stockbase = stockbase - (1 * cantidadP);
+                     stockchampiñones = stockchampiñones - (0.2 * cantidadP);
+                     stockqueso = stockqueso - (0.2 * cantidadP);
+                     stockjamon = stockjamon - (0.2 * cantidadP);
+                     totaltipo3 = 3500 * cantidadP;
+                     total = total + totaltipo3;
+                     pizzasvendidas3 = pizzasvendidas3 + cantidadP;
+                     break;
+            
+                     
+            default: System.out.println("Ingrese el nro. de su pizza entre 1 y 3");
+                     break;
+        }
+        
+        pizzasvendidasT = pizzasvendidas1 + pizzasvendidas2 + pizzasvendidas3;
+        
+        }while ((pizza <1) || (pizza > 3));
+        
+        System.out.println("Si desea ingresar otra pizza ingrese 1, si no, cualquier otro número" );
+        opcion = entrada.nextInt();
+        
+        
+        if (opcion == 1){
+            conta ++;
+        
+        }if(opcion == 2){
+            break;
+        }
+        }
+    
+       
+       
+    utilidad = total - ((pizzasvendidas1*1280)+(pizzasvendidas2*2030)+(pizzasvendidas3*2700));
+       
+       
+    System.out.println("Se vendieron "+pizzasvendidasT+" pizzas con un monto total de "+total);
+    System.out.println("Se vendieron "+pizzasvendidas1 +" pizzas tipo 1 con un monto total de "+totaltipo1);
+    System.out.println("Se vendieron "+pizzasvendidas2 +" pizzas tipo 2 con un monto total de "+totaltipo2);
+    System.out.println("Se vendieron "+pizzasvendidas3 +" pizzas tipo 3 con un monto total de "+totaltipo3);
+    System.out.println("Quedan "+stockbase+" unidades de base de pizza");
+    System.out.println("Quedan "+stockqueso+"kg de queso");
+    System.out.println("Quedan "+stockjamon+"kg de jamón");
+    System.out.println("Quedan "+stocktomate+"kg de tomates");
+    System.out.println("Quedan "+stockchampiñones+"kg de champiñones");
+    System.out.println("La utilidad del dìa es "+utilidad);
+   
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+    }
+    
+}
