@@ -1,0 +1,196 @@
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package caja.registradora;
+
+import java.util.Scanner;
+
+/**
+ *
+ * @author dci
+ */
+public class CajaRegistradora {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+
+        Scanner entrada = new Scanner(System.in);
+
+        int cantidad;
+        int reingreso;
+        int codigo;
+        int total_venta = 0, venta_dia = 0, nro_ventas = 0;
+        int martillo = 0, sierra = 0, tijeras = 0, atornillador = 0, clavos = 0, tornillos = 0, yunque = 0;
+        int totalmartillo = 0, totalsierra = 0, totaltijeras = 0;
+        int totalatornillador = 0, totalclavos = 0, totaltornillos = 0, totalyunque = 0;
+        int totalventa = 0;
+        int t_martillo = 0, t_sierra = 0, t_tijeras = 0, t_atornillador = 0;
+        int t_clavos = 0, t_tornillos = 0, t_yunque = 0;
+        int v_martillo = 0, v_sierra = 0, v_tijeras = 0, v_atornillador = 0;
+        int v_clavos = 0, v_tornillos = 0, v_yunque = 0;
+        int opcion;
+
+        do {
+
+            do {
+                do {
+
+                    System.out.println("Ingrese código del producto a comprar");
+                    codigo = entrada.nextInt();
+
+                    if (codigo == 210) {
+                        System.out.println("Cuanta cantidad necesita");
+                        cantidad = entrada.nextInt();
+                        total_venta = total_venta + (2990 * cantidad);
+                        martillo += cantidad;
+
+                    }
+                    if (codigo == 211) {
+                        System.out.println("Cuanta cantidad necesita");
+                        cantidad = entrada.nextInt();
+                        total_venta = total_venta + (3490 * cantidad);
+                        sierra += cantidad;
+
+                    }
+                    if (codigo == 212) {
+                        System.out.println("Cuanta cantidad necesita");
+                        cantidad = entrada.nextInt();
+                        total_venta = total_venta + (1990 * cantidad);
+                        tijeras += cantidad;
+
+                    }
+                    if (codigo == 213) {
+                        System.out.println("Cuanta cantidad necesita");
+                        cantidad = entrada.nextInt();
+                        total_venta = total_venta + (2390 * cantidad);
+                        atornillador += cantidad;
+
+                    }
+                    if (codigo == 214) {
+                        System.out.println("Cuanta cantidad necesita");
+                        cantidad = entrada.nextInt();
+                        total_venta = total_venta + (490 * cantidad);
+                        clavos += cantidad;
+
+                    }
+                    if (codigo == 215) {
+                        System.out.println("Cuanta cantidad necesita");
+                        cantidad = entrada.nextInt();
+                        total_venta = total_venta + (990 * cantidad);
+                        tornillos += cantidad;
+
+                    }
+                    if (codigo == 216) {
+                        System.out.println("Cuanta cantidad necesita");
+                        cantidad = entrada.nextInt();
+                        total_venta = total_venta + (4090 * cantidad);
+                        yunque += cantidad;
+
+                    }
+
+                    if ((codigo < 210) || (codigo > 216)) {
+                        System.out.println("Ingrese un còdigo válido");
+                    }
+
+                } while ((codigo < 210) || (codigo > 216));
+
+                System.out.println("Desea ingresar otro producto a su carrito");
+                System.out.println("1. SI");
+                System.out.println("2. No");
+                reingreso = entrada.nextInt();
+
+            } while ((reingreso < 2) || (reingreso > 2));
+
+            System.out.println("Total de esta venta:");
+
+            System.out.println("NOMBRE   PRODUCTO   CANTIDAD");
+
+            if (martillo > 0) {
+                totalmartillo = 2990 * martillo;
+                System.out.println("Martillo   " + martillo + "     $" + totalmartillo);
+            }
+            if (sierra > 0) {
+                totalsierra = 3490 * sierra;
+                System.out.println("Sierra     " + sierra + "      $" + totalsierra);
+
+            }
+            if (tijeras > 0) {
+                totaltijeras = 1990 * tijeras;
+                System.out.println("Tijeras    " + tijeras + "      $" + totaltijeras);
+            }
+            if (atornillador > 0) {
+                totalatornillador = 2390 * atornillador;
+                System.out.println("Atornillador   " + atornillador + "   $" + totalatornillador);
+            }
+            if (clavos > 0) {
+                totalclavos = 490 * clavos;
+                System.out.println("Clavos     " + clavos + "       $" + totalclavos);
+            }
+            if (tornillos > 0) {
+                totaltornillos = 990 * tornillos;
+                System.out.println("Tornillos   " + tornillos + "   $" + totaltornillos);
+            }
+            if (yunque > 0) {
+                totalyunque = 4090 * yunque;
+                System.out.println("Yunque      " + yunque + "      $" + totalyunque);
+            }
+
+            System.out.println("TOTAL              $" + total_venta);
+
+            t_martillo = t_martillo + martillo;
+            t_sierra = t_sierra + sierra;
+            t_tijeras = t_tijeras + tijeras;
+            t_atornillador = t_atornillador + atornillador;
+            t_clavos = t_clavos + clavos;
+            t_tornillos = t_tornillos + tornillos;
+            t_yunque = t_yunque + yunque;
+
+            v_martillo += totalmartillo;
+            v_sierra += totalsierra;
+            v_tijeras += totaltijeras;
+            v_atornillador += totalatornillador;
+            v_clavos += totalclavos;
+            v_tornillos += totaltornillos;
+            v_yunque += totalyunque;
+
+            venta_dia = venta_dia + total_venta;
+            nro_ventas += 1;
+
+            totalmartillo = 0;
+            totalsierra = 0;
+            totaltijeras = 0;
+            totalatornillador = 0;
+            totalclavos = 0;
+            totaltornillos = 0;
+            totalyunque = 0;
+            martillo = 0;
+            sierra = 0;
+            tijeras = 0;
+            atornillador = 0;
+            clavos = 0;
+            tornillos = 0;
+            yunque = 0;
+
+            System.out.println("Si no desea realizar otra operaciòn");
+            System.out.println("Ingrese 1 para salir");
+
+            opcion = entrada.nextInt();
+
+        } while ((opcion > 1) || (opcion < 1));
+
+        System.out.println("Monto total del dia: $" + venta_dia);
+        System.out.println("Nùmero de ventas realizadas: " + nro_ventas);
+        System.out.println("CÓDIGO   NOMBRE   CANTIDAD   INGRESEOS");
+        System.out.println("210   Martillo    " + t_martillo + "         " + v_martillo);
+        System.out.println("211   Sierra      " + t_sierra + "         " + v_sierra);
+        System.out.println("212   Tijeras     " + t_tijeras + "         " + v_tijeras);
+        System.out.println("213   Atornillador" + t_atornillador + "         " + v_atornillador);
+        System.out.println("214   Clavos      " + t_clavos + "         " + v_clavos);
+        System.out.println("215   Tornillos   " + t_tornillos + "         " + v_tornillos);
+        System.out.println("216   Yunque      " + t_yunque + "         " + v_yunque);
+
+    }
+
+}
