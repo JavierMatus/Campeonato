@@ -1,0 +1,134 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package formula1;
+
+import java.util.Scanner;
+
+/**
+ *
+ * @author Javier
+ */
+public class Formula1 {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        Scanner entrada = new Scanner(System.in);
+
+        int competidores, nrocompetidor = 1, nro_vueltas, vuelta = 1, minutos = 0, segundos = 0, milisegundos = 0;
+        int min_a_sup = 1, seg_a_sup = 30, mili_a_sup = 500, min_podio = 59, seg_podio = 59, mili_podio = 999, comp_podio;
+
+        System.out.println("Ingrese número de competidores");
+        competidores = entrada.nextInt();
+
+        for (int i = 0; i < competidores; i++) {
+
+            System.out.println("Ingrese número de vueltas de competidor " + nrocompetidor);
+            nro_vueltas = entrada.nextInt();
+
+            for (int j = 0; j < nro_vueltas; j++) {
+
+                System.out.println("Ingrese tiempo de vuelta: " + vuelta + " del competidor número: " + nrocompetidor);
+                do {
+                    System.out.println("Ingrese minutos");
+                    minutos = entrada.nextInt();
+
+                    if ((minutos < 0) && (minutos > 59)) {
+                        System.out.println("Ingrese minutos entre 0 y 59");
+                    }
+                } while ((minutos < 0) || (minutos > 59));
+
+                do {
+                    System.out.println("Segundos");
+                    segundos = entrada.nextInt();
+
+                    if ((segundos < 0) && (segundos > 59)) {
+                        System.out.println("Ingrese segundos entre 0 y 59");
+                    }
+                } while ((segundos < 0) || (segundos > 59));
+
+                do {
+                    System.out.println("Milisegundos");
+                    milisegundos = entrada.nextInt();
+
+                    if ((milisegundos < 0) && (milisegundos > 59)) {
+                        System.out.println("Ingrese milisegundos entre 0 y 999");
+                    }
+                } while ((minutos < 0) || (minutos > 999));
+
+                if (minutos < min_a_sup) {
+
+                    min_a_sup = minutos;
+                    seg_a_sup = segundos;
+                    mili_a_sup = milisegundos;
+                }
+                if (minutos == min_a_sup) {
+                    if (segundos < seg_a_sup) {
+
+                        seg_a_sup = segundos;
+                        mili_a_sup = milisegundos;
+                    }
+                    if (segundos == seg_a_sup) {
+                        if (milisegundos <= mili_a_sup) {
+
+                            mili_a_sup = milisegundos;
+                        }
+                    }
+                }
+
+                vuelta += 1;
+            }
+            
+            vuelta = 1;
+
+            if (minutos < 1) {
+                System.out.println("Clasificó");
+            }
+            if (minutos == 1) {
+                if (segundos < 30) {
+                    System.out.println("Clasificó");
+                }
+                if (segundos == 30) {
+                    if (milisegundos <= 500) {
+                        System.out.println("Clasificó");
+                    }
+                }
+            }
+
+            System.out.println("El mejor tiempo con el que clasificó el competidor número: " + nrocompetidor + " fué; " + minutos + ":" + segundos + ":" + milisegundos);
+
+            if (minutos < min_podio) {
+                min_podio = minutos;
+                seg_podio = segundos;
+                mili_podio = milisegundos;
+                comp_podio = nrocompetidor;
+            }
+            if (minutos == min_podio) {
+                if (segundos < seg_podio) {
+                    seg_podio = segundos;
+                    mili_podio = milisegundos;
+                    comp_podio = nrocompetidor;
+                }
+                if (segundos == seg_podio) {
+                    if (milisegundos <= mili_podio) {
+                        mili_podio = milisegundos;
+                        comp_podio = nrocompetidor;
+                    }
+                }
+            }
+            System.out.println("El tiempo en Pole Position es de; " + min_podio + ":" + seg_podio + ":" + mili_podio + " del competidor Nro: " + nrocompetidor);
+
+            nrocompetidor += 1;
+
+            minutos = 1;
+            segundos = 30;
+            milisegundos = 500;
+        }
+
+    }
+
+}
