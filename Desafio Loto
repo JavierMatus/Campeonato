@@ -1,0 +1,77 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package desafio;
+
+import java.util.Scanner;
+
+/**
+ *
+ * @author dci
+ */
+public class Desafio {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+
+        Scanner intro = new Scanner(System.in);
+
+        int azar1 = (int) (Math.random() * 36 + 1);
+        int azar2 = (int) (Math.random() * 36 + 1);
+        
+        int coincidencia = 0;
+        int N=6;
+        
+        int[] loto = new int[N];
+        int[] carton = new int[N];
+
+        for (int i = 0; i < N; i++) {
+            System.out.println("Ingrese el numero del loto " + (i + 1));
+            carton[i] = intro.nextInt();
+        }
+
+        for (int i = 0; i < N; i++) {
+            loto[i] = azar1;
+            if (i > 0) {
+                for (int j = 0; j < i; j++) {
+                    do {
+                        if (loto[i] == loto[j]) {
+                            loto[i] = azar2 = (int) (Math.random() * 36 + 1);
+                        }
+                    } while (azar1 == azar2);
+                }
+
+            }
+
+        }
+
+        for (int i = 0; i < N; i++) {
+            for (int j = 0; j < N; j++) {
+
+                if (carton[i] == loto[j]) {
+                    coincidencia += 1;
+                }
+            }
+        }
+
+        for (int i = 0; i < N; i++) {
+            System.out.println("Numeros elegido: " + carton[i] + " -Número sorteo   " + loto[i]);
+
+        }
+
+        System.out.println("Nùmero de aciertos: " + coincidencia);
+
+        if (coincidencia == 6) {
+            System.out.println("Usted tiene ell carton ganador");
+
+        } else {
+            System.out.println("Siga participando");
+        }
+
+    }
+
+}
