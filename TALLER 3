@@ -1,0 +1,130 @@
+
+package test;
+
+import java.util.Scanner;
+
+
+public class Test {
+
+    
+    public static void main(String[] args) {
+
+        Scanner intro = new Scanner(System.in);
+
+        int alumnos, notas;
+        float promedionotas = 0, notamaxima, notaminima;
+        float suma = 0;
+
+        System.out.print("Ingrese cantidad de alumnos: ");
+        alumnos = intro.nextInt();
+
+        System.out.print("Ingrese cantidad de notas: ");
+        notas = intro.nextInt();
+
+        float[][] promedio = new float[alumnos + 3][notas + 3];
+
+        for (int i = 0; i < alumnos; i++) {
+            for (int j = 0; j < notas; j++) {
+
+                System.out.print("Ingrese nota " + (j + 1) + " del alumno " + (i + 1) + ": ");
+                promedio[i][j] = intro.nextInt();
+
+            }
+
+        }
+
+        System.out.println("\n =======================================");
+
+        for (int i = 0; i < alumnos; i++) {
+
+            notamaxima = promedio[i][0];
+            notaminima = promedio[i][0];
+
+            for (int j = 0; j < notas; j++) {
+
+                suma += promedio[i][j];
+
+                if (promedio[i][j] > notamaxima) {
+                    notamaxima = promedio[i][j];
+
+                }
+
+                if (promedio[i][j] < notaminima) {
+                    notaminima = promedio[i][j];
+                }
+
+            }
+            promedionotas = suma / notas;
+
+            promedio[i][notas] = promedionotas;
+            promedio[i][notas + 1] = notamaxima;
+            promedio[i][notas + 2] = notaminima;
+
+            suma = 0;
+            promedionotas = 0;
+        }
+
+        for (int j = 0; j < notas; j++) {
+            System.out.print("   \tN" + (j + 1));
+        }
+
+        System.out.println("\tProm\tMax\tmin");
+
+        for (int i = 0; i < (alumnos); i++) {
+
+            System.out.print("\nAlumno " + (i + 1) + " | ");
+
+            for (int j = 0; j < (notas + 3); j++) {
+
+                System.out.print(promedio[i][j] + "\t");
+            }
+            System.out.print("");
+        }
+
+        for (int i = 0; i < notas; i++) {
+
+            notamaxima = promedio[0][i];
+            notaminima = promedio[0][i];
+            for (int j = 0; j < alumnos; j++) {
+
+                suma += promedio[j][i];
+
+                if (promedio[j][i] > notamaxima) {
+                    notamaxima = promedio[j][i];
+
+                }
+
+                if (promedio[j][i] < notaminima) {
+                    notaminima = promedio[j][i];
+                }
+
+            }
+            promedionotas = suma / alumnos;
+            promedio[alumnos][i] = promedionotas;
+            promedio[alumnos + 1][i] = notamaxima;
+            promedio[alumnos + 2][i] = notaminima;
+            suma = 0;
+        }
+
+        System.out.print("\nPromedio | ");
+        for (int i = 0; i < (notas); i++) {
+            System.out.print(promedio[alumnos][i] + "\t");
+        }
+
+        System.out.print("\nMin      | ");
+        for (int i = 0; i < (notas); i++) {
+
+            System.out.print(promedio[alumnos + 2][i] + "\t");
+        }
+
+        System.out.print("\nMax      | ");
+        for (int i = 0; i < (notas); i++) {
+
+            System.out.print(promedio[alumnos + 1][i] + "\t");
+        }
+
+        System.out.print("");
+
+        
+    }
+}
