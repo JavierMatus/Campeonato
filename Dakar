@@ -1,0 +1,74 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package rallydakar;
+
+import java.util.Scanner;
+
+/**
+ *
+ * @author Javier
+ */
+public class RallyDakar {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        Scanner intro = new Scanner(System.in);
+
+        int tramos, minutos, segundos, milisegundos, mejormin = 0, mejorseg = 0, mejormil = 0, numtramo = 0, mejortramo;
+
+        for (int i = 0; i < 10; i++) {
+            for (int j = 0; j < 5; j++) {
+                System.out.println("Ingresar numeros de tramos");
+                tramos = intro.nextInt();
+
+                for (int k = 0; k < tramos; k++) {
+                    numtramo += 1;
+
+                    System.out.println("Ingresar tiempo de vuelta");
+                    System.out.print("Minutos: ");
+                    minutos = intro.nextInt();
+
+                    System.out.print("Segundos: ");
+                    segundos = intro.nextInt();
+
+                    System.out.print("Milisegundos: ");
+                    milisegundos = intro.nextInt();
+
+                    if (minutos == mejormin) {
+                        if (segundos > mejorseg) {
+
+                            mejorseg = segundos;
+                            mejormil = milisegundos;
+                            mejortramo = numtramo;
+                        }
+                        if (segundos == mejorseg) {
+                            if (milisegundos > mejormil) {
+
+                                mejormil = milisegundos;
+                                mejortramo = numtramo;
+                            }
+                        }
+                    }
+                    if (minutos > mejormin) {
+                        mejormin = minutos;
+                        mejorseg = segundos;
+                        mejormil = milisegundos;
+                        mejortramo = numtramo;
+
+                    }
+
+                }
+
+            }
+
+        }
+        
+
+    }
+
+}
