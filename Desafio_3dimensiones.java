@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package desafio3dimensiones;
+package desafio_3dimensiones;
 
 import java.util.Scanner;
 
@@ -11,7 +11,7 @@ import java.util.Scanner;
  *
  * @author Javier
  */
-public class Desafio3dimensiones {
+public class Desafio_3dimensiones {
 
     /**
      * @param args the command line arguments
