@@ -1,0 +1,12 @@
+#BlueJ class context
+comment0.params=respuesta
+comment0.target=void\ setRespuesta(int[])
+comment1.params=
+comment1.target=int[]\ getRespuesta()
+comment2.params=resp
+comment2.target=prueba(int[])
+comment3.params=
+comment3.target=void\ altercorrectas()
+comment4.params=
+comment4.target=void\ resultado()
+numComments=5
